@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import RNPickerSelect from 'react-native-picker-select';
+import { Picker } from '@react-native-picker/picker';
 import Header from '../components/Header';
-import Footer from '../Components/Footer';
+import Footer from '../components/Footer';
 
 
 const OrderScreen = ({ navigation }) => {
@@ -12,7 +12,7 @@ const OrderScreen = ({ navigation }) => {
     const [email, setEmail] = React.useState('');
     const [phone, setPhone] = React.useState('');
 
-    const [pickup, setPickup] = useState('');
+    const [pickup, setPickup] = React.useState('');
     const [date, setDate] = React.useState('');
     const [time, setTime] = React.useState('');
 

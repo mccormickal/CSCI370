@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import Header from '../components/Header';
-import Footer from '../Components/Footer';
+import Footer from '../components/Footer';
 
 
 const HomeScreen = ({ navigation }) => {

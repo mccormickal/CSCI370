@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import Header from '../components/Header';
-import Footer from '../Components/Footer';
+import Footer from '../components/Footer';
 
 
 const GalleryScreen = () => {
@@ -10,28 +10,28 @@ const GalleryScreen = () => {
             <Header/>
             <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <View style={styles.columnContainer}>
-                    {/* Image 1 */}
+                    {/* Image 1
                     <Image
                         source={require('')}
                         style={styles.image}
                     />
-                    {/* Image 2 */}
+                    {/* Image 2 }
                     <Image
                         source={require('')}
                         style={styles.image}
                     />
                 </View>
                 <View style={styles.columnContainer}>
-                    {/* Image 3 */}
+                    {/* Image 3 }
                     <Image
                         source={require('')}
                         style={styles.image}
                     />
-                    {/* Image 4 */}
+                    {/* Image 4 }
                     <Image
                         source={require('')}
                         style={styles.image}
-                    />
+                    /> */}
                 </View>
             </ScrollView>
            <Footer/>
