@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Header from '../Components/Header';
+import * as React from 'react';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import Header from '../components/Header';
+import Footer from '../Components/Footer';
 
 
 const HomeScreen = ({ navigation }) => {
@@ -10,9 +10,13 @@ const HomeScreen = ({ navigation }) => {
             <Header/>
             <Text>Hello World!</Text>
             <Button 
-                title='Go to Gallery'
-                onPress={() => navigation.navigate("Gallery")} 
-            />
+                onPress={() => {
+                    navigation.navigate("Order")
+                }} 
+            >
+                Order Now!
+            </Button>
+            <Footer/>
         </View>
     );
 };

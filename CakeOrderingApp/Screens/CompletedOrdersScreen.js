@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Header from '../Components/Header';
+import Header from '../components/Header';
+import Footer from '../Components/Footer';
 
 
 const CompletedOrdersScreen = () => {
@@ -8,6 +9,7 @@ const CompletedOrdersScreen = () => {
         <View>
             <Header/>
            <Text>Hello World!</Text>
+           <Footer/>
         </View>
     );
 };

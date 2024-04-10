@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Header() {
+const Header = () => {
     return (
         <View style={headerStyles.header}>
             <View>
@@ -10,8 +10,10 @@ export default function Header() {
             </View>
             {/* Hamburger Icon */}
         </View>
-    );
+    )
 }
+
+export default Header;
 
 const headerStyles = StyleSheet.create({
     header: {
