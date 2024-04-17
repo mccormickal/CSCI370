@@ -2,12 +2,13 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import RNPickerSelect from 'react-native-picker-select';
 
 
 const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <Header/>
+           <Header />
             <View style={styles.contentContainer}>
                 <Text style={styles.header}>Hello World!</Text>
                 <Text style={styles.bodyText}>
@@ -20,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
                    title="Order Now!"
                 />
             </View>
-            <Footer/>
+            
         </View>
     );
 };

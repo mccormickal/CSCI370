@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 const Header = () => {
     return (
         <View style={headerStyles.header}>
+            <Ionicons name='cake' size={24} color='black' style={headerStyles.icon}/>
             <View>
                 <Text style={headerStyles.headerText}>YumCakes</Text>
             </View>
-            {/* Hamburger Icon */}
+            <Ionicons name='menu' size={24} color='black' style={headerStyles.icon}/>
         </View>
     )
 }
@@ -27,5 +28,8 @@ const headerStyles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         color: '#333',
+    },
+    icon: {
+        marginRight:  10,
     }
 })
