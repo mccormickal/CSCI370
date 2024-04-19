@@ -2,3 +2,6 @@
 
 View
 Text
+Image
+Button
+Datetime
