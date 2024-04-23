@@ -24,7 +24,6 @@ const CompletedOrdersScreen = ({ route }) => {
             renderItem={renderItem}
             keyExtractor={item => item.id.toString()}
            />
-           <Footer/>
         </View>
     );
 };

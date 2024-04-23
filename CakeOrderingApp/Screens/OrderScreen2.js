@@ -2,11 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import OrderScreen3 from '../screens/OrderScreen3';
 
 
 const OrderScreen2 = ({ navigation }) => {
     // Define state variables
-    const [] = React.useState('');
+    const { fName, lName, email, phone } = route.params;
 
     // Handle navigation to next page
     const nextPage = () => {
@@ -21,6 +22,8 @@ const OrderScreen2 = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Header/>
+            <Text>First Name: {fName}</Text>
+            <Text>Last Name: {lName}</Text>
 
             <Text styles={styles.sectionHeader}></Text>
            <View style={styles.formContainer}>

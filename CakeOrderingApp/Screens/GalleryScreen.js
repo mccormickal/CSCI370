@@ -7,7 +7,12 @@ import Footer from '../components/Footer';
 const GalleryScreen = () => {
     return (
         <View style={styles.container}>
-            <Header/>
+            <View style={styles.stickyHeader}>
+                <Header />
+                <View style={styles.pageHeader}>
+                    <Text style={styles.pageHeaderText}>Gallery</Text>
+                </View>
+            </View>
             <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <View style={styles.columnContainer}>
                     {/* Image 1
@@ -34,7 +39,6 @@ const GalleryScreen = () => {
                     /> */}
                 </View>
             </ScrollView>
-           <Footer/>
         </View>
     );
 };
@@ -44,6 +48,18 @@ export default GalleryScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    pageHeader: {
+        backgroundColor: '#fff',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+    },
+    pageHeaderText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     scrollViewContent: {
         flexDirection: 'row',
