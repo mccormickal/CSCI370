@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import OrderStackNavigator from './OrderStackNavigator';
-
 // Import screens
 import HomeScreen from '../screens/HomeScreen';
 import GalleryScreen from '../screens/GalleryScreen';
-import OrderScreen from '../screens/OrderScreen';
+//import OrderScreen from '../screens/OrderScreen';
 import CompletedOrdersScreen from '../screens/CompletedOrdersScreen';
-import Header from "../components/Header";
+import OrderStackNavigator from './OrderStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,54 +18,41 @@ const TabNavigator = () => {
                     let iconName;
                     if (route.name === 'Home') {
                         iconName = focused ? 'home-sharp' : 'home-outline';
-                        return <Ionicons name={iconName} size={size} color={color} />
                     } else if (route.name === 'Gallery') {
                         iconName = focused ? 'images-sharp' : 'images-outline';
-                        return <Ionicons name={iconName} size={size} color={color} />
                     } else if (route.name === 'Order') {
                         iconName = focused ? 'receipt-sharp' : 'receipt-outline';
-                        return <Ionicons name={iconName} size={size} color={color} />
-                    } else if (route.name === 'ComppletedOrders') {
+                    } else if (route.name === 'CompletedOrders') {
                         iconName = focused ? 'bag-check' : 'bag-check-outline';
-                        return <Ionicons name={iconName} size={size} color={color} />
                     }
-                    return iconName;
-                }
+                    return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: '#FF69B4',
+                tabBarInactiveTintColor: '#CCCCCC',
+                tabBarStyle: {backgroundColor: '#FFFFFF'},
+                tabBarLabelStyle: {fontSize: 12}
             })}
-
-            // screenOptions={{
-            //     "tabBarActiveTintColor": "blue",
-            //     "tabBarStyle": [
-            //         {
-            //             "display": "flex"
-            //         },
-            //         null
-            //     ]
-            // }}
-
-            
-            // tabBarOptions={{
-            //     activeTintColor: 'blue',
-            //     inactiveTintColot: 'white',
-            // }}
         >
-            <Tab.Screen name="Home" 
+            <Tab.Screen 
+                name="Home" 
                 component={HomeScreen}
                 options={{ headerShown: false }}
             />
-            <Tab.Screen name="Gallery" 
+            <Tab.Screen 
+                name="Gallery" 
                 component={GalleryScreen}
                 options={{ headerShown: false }}
             />
-            <Tab.Screen name="Order" 
-                component={OrderScreen}
+            <Tab.Screen 
+                name="Order" 
+                component={OrderStackNavigator}
                 options={{ headerShown: false }}
             />
-            <Tab.Screen name="CompletedOrders" 
+            <Tab.Screen 
+                name="CompletedOrders" 
                 component={CompletedOrdersScreen}
                 options={{ headerShown: false }}
             />
-            <Tab.Screen name="OrderStack" component={OrderStackNavigator}/>
         </Tab.Navigator>
     );
 };

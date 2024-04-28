@@ -1,60 +1,61 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
-import RNPickerSelect from 'react-native-picker-select';
-import TabNavigator from '../navigation/TabNavigator';
+import styles from '../styles';
 
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
+    const navigation = useNavigation(); // Initialize navigation
+
+    // Handle navigation to OrderScreen1 when "Order Now" is pressed
+    const handleOrderNow = () => {
+        navigation.navigate('OrderScreen');
+    };
+
     return (
         <View style={styles.container}>
-            <Header />
+            {/* Header */}
+            <View style={styles.stickyHeader}>
+                <Header />
+                <View style={styles.pageHeader}>
+                    <Text style={styles.pageHeaderText}>Home</Text>
+                </View>
+            </View>
             <View style={styles.contentContainer}>
-                <Text style={styles.header}>Home</Text>
                 <Image
-                    style={styles.image}
+                    style={homeStyles.homeImage}
                     source={require('../images/kitchen_img.jpg')}>
                 </Image>
-                <Text style={styles.bodyText}>
-                    Welcome to YumCakes, your one-stop destination for delicious cakes delivered right to your 
-                    doorstep! Indulge in our delectable selection of cakes baked with love and care by our expert 
-                    bakers. Whether it's a birthday celebration, anniversary, or just a sweet craving, our wide 
-                    range of flavors and designs ensures there's something for everyone. Place your order today 
-                    and treat yourself to a slice of happiness with YumCakes!
+                <Text style={homeStyles.bodyText}>
+                    Welcome to Cakes by Maddux, your go-to app for ordering delicious cakes 
+                    delivered right to your doorstep! Indulge in our delectable selection of 
+                    cakes baked with love and care by our expert bakers. Whether it's a 
+                    birthday celebration, anniversary, or just a sweet craving, our wide range 
+                    of flavors and designs ensures there's something for everyone. Place your 
+                    order today and treat yourself to a slice of happiness with Cakes by Maddux!
                 </Text>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        navigation.navigate("Order")
-                    }}
-                >
-                    <Text style={styles.buttonText}>Order Now!</Text>
-                </TouchableOpacity>
+
+
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={handleOrderNow}
+                    >
+                        <Text style={styles.buttonText}>Order Now!</Text>
+                    </TouchableOpacity>
+                </View>
+                
             </View>
-            {/* <Footer/> */}
         </View>
     );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "flex-start",
-    },
-    contentContainer: {
-        flex: 1,
-        alignItems: "center",
-    },
-    header: {
-        fontSize: 24,
-        fontWeight: "bold",
-        textAlign: 'center',
-    },
-    image: {
+const homeStyles = StyleSheet.create({
+    
+    homeImage: {
         resizeMode: 'contain',
         height: 175,
         marginTop: 10,
@@ -63,24 +64,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginTop: 20,
         textAlign: 'justify',
-        width: 300,
+        width: '80%',
+        color: '#333',
     },
-    button: {
-        backgroundColor: '#007bff',
-        borderRadius: 15,
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-        marginTop: 40,
-        shadowColor: '#000',
-        shadowOffset: { width: 1, height: 3 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    buttonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-        textAlign: 'center',
-    }
-})
+});

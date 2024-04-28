@@ -8,12 +8,33 @@ import OrderScreen4 from '../screens/OrderScreen4';
 const Stack = createStackNavigator();
 
 const OrderStackNavigator = () => {
-    <Stack.Navigator initialRouteName='OrderScreen'>
-        <Stack.Screen name='OrderScreen' component={OrderScreen}/>
-        <Stack.Screen name='OrderScreen2' component={OrderScreen2}/>
-        <Stack.Screen name='OrderScreen3' component={OrderScreen3}/>
-        <Stack.Screen name='OrderScreen4' component={OrderScreen4}/>
-    </Stack.Navigator>
+    return (
+        <Stack.Navigator initialRouteName='OrderScreen'>
+            <Stack.Screen 
+                name='OrderScreen' 
+                component={OrderScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+                name='OrderScreen2' 
+                component={OrderScreen2}
+                options={{ headerShown: false }}
+                //initialParams={{ navigation }}
+            />
+            <Stack.Screen 
+                name='OrderScreen3' 
+                component={OrderScreen3}
+                options={{ headerShown: false }}
+                //initialParams={{ navigation }}
+            />
+            <Stack.Screen 
+                name='OrderScreen4' 
+                component={OrderScreen4}
+                options={{ headerShown: false }}
+                //initialParams={{ navigation }}
+            />
+        </Stack.Navigator>
+    );
 };
 
 export default OrderStackNavigator;
