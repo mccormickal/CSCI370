@@ -50,13 +50,44 @@ const OrderScreen = ({ navigation }) => {
     };
 
     const handleTimeConfirm = (time) => {
+        const selectedTimeObject = new Date();
+        selectedTimeObject.setHours(time.getHours());
+        selectedTimeObject.setMinutes(time.getMinutes());
         setSelectedTime(time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }));
         hideTimePicker();
     };
 
     // Handle navigation to next page
     const nextPage = () => {
-        navigation.navigate('OrderScreen2', { fName, lName, email, phone, pickup, selectedDate, selectedTime });
+        // Convert date object to a string
+        dateOptions = { year: 'numeric', month: 'long', day: 'numeric'}
+        const dateString = selectedDate.toLocaleDateString('en-us', dateOptions);
+        
+
+        // Parse selectedTime manually
+        const [hourString, minuteString] = selectedTime.split(':');
+        const hour = parseInt(hourString);
+        const minute = parseInt(minuteString);
+
+        // Check if hour and minute are valid
+        if (isNaN(hour) || isNaN(minute) || hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+            console.error('Invalid time format:', selectedTime);
+            return; // Exit function if time is invalid
+        }
+
+        // Construct Date object
+        const timeAsDate = new Date();
+        timeAsDate.setHours(hour);
+        timeAsDate.setMinutes(minute);
+
+        const selectedHour = timeAsDate.getHours();
+        const selectedMinute = timeAsDate.getMinutes();
+        const period = selectedHour < 12 ? 'AM' : 'PM';
+        // const hour = selectedHour % 12 || 12;
+        const formattedHour = hour < 10 ? '0' + hour : hour;
+        const formattedMinute = selectedMinute < 10 ? '0' + selectedMinute : selectedMinute;
+        const timeString = `${formattedHour}:${formattedMinute} ${period}`;
+        navigation.navigate('OrderScreen2', { fName, lName, email, phone, pickup, selectedDate: dateString, selectedTime: timeString });
     };
 
     return (
@@ -109,7 +140,7 @@ const OrderScreen = ({ navigation }) => {
 
                 {/* Order Info section */}
                 <Text style={styles.sectionHeader}>Order Information</Text>
-                <View style={orderStyles.formContainer}>
+                <View style={styles.formContainer}>
 
                     {/* Pickup/delivery radio buttons */}
                     <View style={orderStyles.radioContainer}>
@@ -117,7 +148,7 @@ const OrderScreen = ({ navigation }) => {
                         <View style={orderStyles.radioButtonContainer}>
                             <Text>Pick Up</Text>
                             <TouchableOpacity
-                                style={[orderStyles.radioButton, pickup === 'Pick Up' && styles.radioButtonChecked]}
+                                style={[orderStyles.radioButton, pickup === 'Pick Up' && orderStyles.radioButtonChecked]}
                                 onPress={() => setPickup('Pick Up')}
                             >
                                 <RadioButton
@@ -151,6 +182,7 @@ const OrderScreen = ({ navigation }) => {
                         isVisible={datePickerVisible}
                         mode="date"
                         date={selectedDate}
+                        minimumDate={new Date()}
                         onConfirm={handleDateConfirm}
                         onCancel={hideDatePicker}
                     />
@@ -208,7 +240,7 @@ const orderStyles = StyleSheet.create({
         marginLeft: 5,
     },
     radioButtonChecked: {
-        backgroundColor: '#FF4081',
+        backgroundColor: '#BA68C8',
     },
     deliveryButton: {
         //marginRight: 60,

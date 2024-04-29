@@ -26,16 +26,6 @@ const GalleryScreen = () => {
         { id: '13', image: require('../images/Alyssa-21.jpg'), cake: 'Red Velvet', icing: 'Cream Cheese'},
     ];
 
-    // const renderItem = ({ item }) => (
-    //     <View style={galleryStyles.imageContainer}>
-    //         <Image source={item.image} style={galleryStyles.image} />
-    //         <Text style={galleryStyles.description}>
-    //             {item.cake} Cake{'\n'}{item.icing} Icing
-    //         </Text>
-    //     </View>
-    // )
-
-
     const renderItem = ({ item }) => (
         
             <View style={galleryStyles.imageContainer}>
@@ -66,7 +56,27 @@ const GalleryScreen = () => {
                 contentContainerStyle={galleryStyles.flatListContent}
             />
             {/* Modal that pops up when image is pressed */}
-            
+            <Modal
+                animationType='fade'
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={galleryStyles.modalContainer}>
+                    <TouchableOpacity 
+                        style={styles.button}
+                        onPress={() => setModalVisible(false)}
+                    >
+                        <Text style={styles.buttonText}>Close</Text>
+                    </TouchableOpacity>
+                    <View style={galleryStyles.modalContent}>
+                        {selectedImage && 
+                            <Image source={selectedImage} style={galleryStyles.modalImage}/>}
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 };
@@ -103,5 +113,16 @@ const galleryStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        padding: 20,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    modalImage: {
+        width: 300,
+        height: 300,
     },
 })

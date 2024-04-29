@@ -54,6 +54,7 @@ const OrderScreen2 = ({ route }) => {
         {label: 'Vanilla', value: 'Vanilla'},
         {label: 'Chocolate', value: 'Chocolate'},
         {label: 'Cream Cheese', value: 'Cream Cheese'},
+        {label: 'Peanut Butter', value: 'Peanut Butter'},
         {label: 'Strawberry', value: 'Strawberry'},
         {label: 'Raspberry', value: 'Raspberry'},
     ];

@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 const OrderStackNavigator = () => {
     return (
-        <Stack.Navigator initialRouteName='OrderScreen'>
+        <Stack.Navigator >
             <Stack.Screen 
                 name='OrderScreen' 
                 component={OrderScreen}

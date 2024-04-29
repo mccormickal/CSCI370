@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialIcons } from '@expo/vector-icons';
 import Header from '../components/Header';
 import styles from '../styles';
 
 
 const HomeScreen = () => {
-    const navigation = useNavigation(); // Initialize navigation
+    // Initialize navigation
+    const navigation = useNavigation();
 
     // Handle navigation to OrderScreen1 when "Order Now" is pressed
     const handleOrderNow = () => {
@@ -23,9 +25,13 @@ const HomeScreen = () => {
                 </View>
             </View>
             <View style={styles.contentContainer}>
+                <View style={homeStyles.headerContainer}>
+                    <Text style={homeStyles.header}>Cakes by Maddux</Text>
+                    <MaterialIcons name="cake" size={24} color='#FF69B4' />
+                </View>
                 <Image
                     style={homeStyles.homeImage}
-                    source={require('../images/kitchen_img.jpg')}>
+                    source={require('../images/home-cakes.png')}>
                 </Image>
                 <Text style={homeStyles.bodyText}>
                     Welcome to Cakes by Maddux, your go-to app for ordering delicious cakes 
@@ -54,17 +60,28 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const homeStyles = StyleSheet.create({
-    
+    headerContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    header: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        marginRight: 8,
+        color: '#333',
+    },
     homeImage: {
         resizeMode: 'contain',
-        height: 175,
+        height: 150,
         marginTop: 10,
     },
     bodyText: {
         fontSize: 16,
-        marginTop: 20,
-        textAlign: 'justify',
-        width: '80%',
+        marginTop: 30,
+        marginBottom: 30,
+        textAlign: 'center',
+        width: '90%',
         color: '#333',
     },
 });

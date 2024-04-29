@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Dropdown } from 'react-native-element-dropdown';
+import { CreditCardInput } from 'react-native-credit-card-input-plus';
 import stateCodesJSON from '../assets/stateCodes';
 // Components
 import Header from '../components/Header';
@@ -16,6 +17,7 @@ const OrderScreen3 = ({ route }) => {
     
     // Define navigation
     const navigation = useNavigation();
+
     const goBack = () => {
         navigation.goBack();
     };
@@ -31,6 +33,29 @@ const OrderScreen3 = ({ route }) => {
     const [city, setCity] = React.useState('');
     const [zipCode, setZipCode] = React.useState('');
     const [stateCode, setStateCode] = React.useState('');
+
+    // Handle credit card change
+    const handleCreditCardChange = (form) => {
+        const { values, status } = form;
+
+        if (status.valid) {
+            // Credit card data is valid
+            const { number, expiry, cvc, name } = values;
+            console.log("Credit Card Number:", number);
+            console.log("Expiry:", expiry);
+            console.log("CVC:", cvc);
+            console.log("Name:", name);
+
+            // You can use this data as needed, e.g., store it in state variables
+            setCardNum(number);
+            setExpDate(expiry);
+            setCvv(cvc);
+            setCardName(name);
+        } else {
+            // Credit card data is invalid, handle accordingly
+            console.log("Invalid credit card information");
+        }
+    }
 
     // Hande Exp Date picker
     const showExpDatePicker = () => {
@@ -83,38 +108,12 @@ const OrderScreen3 = ({ route }) => {
                 <Text style={styles.sectionHeader}>Payment Information</Text>
                 <View style={styles.formContainer}>
                     <Text style={styles.label}>Card Number:</Text>
-                    <TextInput 
-                        style={styles.input}
-                        value={cardNum}
-                        onChangeText={setCardNum}
-                        placeholder='Credit Card Number'
-                        keyboardType='numeric'
-                        maxLength={16}
-                    />
-                    <Text style={styles.label}>Exp. Date:</Text>
-                    <TextInput 
-                        style={styles.input}
-                        value={expDate}
-                        onChangeText={setExpDate}
-                        placeholder='mm/yy'
-                        keyboardType='numeric'
-                        maxLength={5}
-                    />
-                    <Text style={styles.label}>Three Numbers on Back:</Text>
-                    <TextInput 
-                        style={styles.input}
-                        value={cvv}
-                        onChangeText={setCvv}
-                        placeholder='XXX'
-                        keyboardType='number-pad'
-                        maxLength={3}
-                    />
-                    <Text style={styles.label}>Name on Card:</Text>
-                    <TextInput 
-                        style={styles.input}
-                        value={cardName}
-                        onChangeText={setCardName}
-                        placeholder='Full Name'
+                    <CreditCardInput 
+                        requiresName
+                        allowScroll
+                        autoFocus
+                        onChange={handleCreditCardChange}
+                        inputContainerStyle={orderStyles.creditCardInput}
                     />
                 </View>
 

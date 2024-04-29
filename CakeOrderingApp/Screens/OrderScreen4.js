@@ -45,7 +45,8 @@ const OrderScreen4 = ({ route }) => {
                 <Text style={orderStyles.sectionHeader}>Order Details:</Text>
                 <View style={orderStyles.sectionContent}>
                     <Text style={orderStyles.sectionText}>Name: {fName} {lName}</Text>
-                    <Text style={orderStyles.sectionText}>Phone: {phone}</Text>
+                    <Text style={orderStyles.sectionText}>Email: {email}</Text>
+                    <Text style={orderStyles.sectionText}>Phone: {phone}</Text>   
                 </View>
 
                 <Text style={orderStyles.sectionHeader}>Cake Details:</Text>
@@ -116,8 +117,7 @@ const orderStyles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 25,
         marginBottom: 10,
-        color: '#FF69B4', // Pink color for section headers
-        textDecorationLine: 'underline', // Underline for section headers
+        color: '#FF69B4', 
     },
     orderInfo: {
         fontSize: 16,
