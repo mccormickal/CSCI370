@@ -1,7 +1,0 @@
-# Components Used:
-
-View
-Text
-Image
-Button
-Datetime
